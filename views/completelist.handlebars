@@ -1,0 +1,48 @@
+<h2>Greetings, {{username}}!</h2>
+
+<form action="/newitem" method="POST">
+    <input class="center" type="text" placeholder="Add New Todo" name="todo_input">
+</form>
+
+<ul>
+    <div>{{#each list as |item|}}<div>
+        {{#if deleted}}
+        {{else}}
+            {{#if completed}}
+
+                <strike>{{item.content}}</strike>
+                <form action="/{{item.id}}/update/" method="POST" class="same-line">
+                <input type="submit" value="Completed" />
+                </form>
+
+
+
+                <form action="/{{item.id}}/delete/" method="POST" class="same-line">
+                <input type="submit" value="Delete" />
+                </form>
+
+                <br>
+            {{else}}
+
+                {{item.content}}
+                <form action="/{{item.id}}/update/" method="POST" class="same-line">
+                <input type="submit" value="Completed" />
+                </form>
+
+
+
+                <form action="/{{item.id}}/delete/" method="POST" class="same-line">
+                <input type="submit" value="Delete" />
+
+                </form>
+
+
+                <br>
+            {{/if}}
+        {{/if}}
+    {{/each}}
+</ul>
+
+<form action="/logout" method="GET">
+    <section><button><h3>Logout Here</h3></button></section>
+</form>
