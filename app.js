@@ -8,7 +8,7 @@ const express = require('express'),
 
 const app = express();
 
-//express to use handlebars 
+//express to use handlebars
 app.engine("handlebars",exphbs());
 app.set("view engine", "handlebars");
 
@@ -188,4 +188,4 @@ app.get('/logout', async (req,res)=> {
     }
 });
 
-app.listen(8080);
+app.listen(process.env.PORT || 8080);
